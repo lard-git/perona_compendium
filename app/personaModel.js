@@ -1,5 +1,5 @@
 const sqlite3 = require('sqlite3');
-const db = new sqlite3.Database('./persona_compendium.db'); // Use a file-based database
+const db = new sqlite3.Database('./persona_compendium.db'); 
 
 db.serialize(() => {
     db.run(`CREATE TABLE IF NOT EXISTS personas (

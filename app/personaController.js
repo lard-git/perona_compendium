@@ -1,4 +1,4 @@
-const db = require('../models/personaModel');
+const db = require('./personaModel');
 
 exports.getAllPersonas = (req, res) => {
     db.all(`SELECT * FROM personas`, [], (err, rows) => {
@@ -40,5 +40,14 @@ exports.deletePersona = (req, res) => {
             return res.status(400).json({ error: err.message });
         }
         res.redirect('/');
+    });
+};
+
+exports.getAllPersonas = (req, res) => {
+    db.all(`SELECT * FROM personas`, [], (err, rows) => {
+        if (err) {
+            return res.status(400).json({ error: err.message });
+        }
+        res.render('index', { personas: rows });
     });
 };
